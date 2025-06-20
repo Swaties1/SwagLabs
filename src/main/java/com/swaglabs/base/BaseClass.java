@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -54,24 +56,18 @@ public class BaseClass {
 		driver.manage().window().maximize();
 		
 	}
-	
+	@BeforeClass
 	public void launchApp() {
+		setUp();
 		url=ConfigReader.getProperty("url");
 		driver.get(url);
 	}
 	
+	/*@AfterClass
+    public void tearDown() {
+		driver.close();
+	}
+	*/
 
-
-/*public void launchBrowser(String url) {
-    WebDriverManager.chromedriver().setup();
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
-    driver.get(url);
-}
-public void setUp() {
-    launchBrowser("https://www.amazon.in/ap/signin");
-    
-}
-*/
 	}
 
